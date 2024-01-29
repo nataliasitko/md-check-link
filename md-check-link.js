@@ -324,7 +324,7 @@ program
         console.time("Links checked in")
 
         await linkChecker.checkLinks();
-        let deadCount = linkChecker.report();
+        let deadCount = await linkChecker.report();
         console.timeEnd("Links checked in")
         process.exit(deadCount > 0 ? 1 : 0);
 
