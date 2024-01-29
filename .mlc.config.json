@@ -1,14 +1,101 @@
 {
-  "_comment": "This is a configuration file for the [Markdown link check](https://github.com/tcort/markdown-link-check).",
-  "_comment": "All `/kyma-project` repositories in GitHub use [Markdown link check](https://github.com/tcort/markdown-link-check) to check their Markdown files for broken links.",
-  "_comment": "Configuration and maintenance of the Markdown link check tool is the responsibility of a repository owner.",
-  "_comment": "See the following configuration example.",
-  "_comment": "For more details read the [repository guidelines](https://github.com/kyma-project/community/blob/main/docs/guidelines/repository-guidelines/01-new-repository-settings.md).",
+
   "replacementPatterns": [
     {
-      "_comment": "a replacement rule for all the in-repository references",
+      "docsify": true,
+      "pattern": "^https://kyma-project.io/#/btp-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/btp-manager/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "^https://kyma-project.io/#/application-connector-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/application-connector-manager/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/keda-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/keda-manager/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern" : "https://kyma-project.io/#/serverless-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/serverless/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/telemetry-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/telemetry-manager/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/istio/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/istio/main/docs/"  
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/nats-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/nats-manager/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/eventing-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/eventing-manager/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/api-gateway/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/api-gateway/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/kyma/main/docs/"
+    },
+    {
+      "pattern": "^/btp-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/btp-manager/main/docs/"
+    },
+    {
+      "pattern": "^/application-connector-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/application-connector-manager/main/docs/"
+    },
+    {
+      "pattern": "^/keda-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/keda-manager/main/docs/"
+    },
+    {
+      "pattern" : "^/serverless-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/serverless/main/docs/"
+    },
+    {
+      "pattern": "^/telemetry-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/telemetry-manager/main/docs/"
+    },
+    {
+      "pattern": "^/istio/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/istio/main/docs/"  
+    },
+    {
+      "pattern": "^/nats-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/nats-manager/main/docs/"
+    },
+    {
+      "pattern": "^/eventing-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/eventing-manager/main/docs/"
+    },
+    {
+      "pattern": "^/api-gateway/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/api-gateway/main/docs/"
+    },
+    {
+      "docsify": true,
       "pattern": "^/",
-      "replacement": "{{BASEURL}}/"
+      "replacement": "https://raw.githubusercontent.com/kyma-project/kyma/main/docs/" 
     }
-  ]
+
+  ],
+  "timeout": "10s",
+  "retryCount": 5,
+  "aliveStatusCodes": [200]
+
 }
