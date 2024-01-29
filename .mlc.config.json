@@ -86,11 +86,6 @@
     {
       "pattern": "^/api-gateway/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/api-gateway/main/docs/"
-    },
-    {
-      "docsify": true,
-      "pattern": "^/",
-      "replacement": "https://raw.githubusercontent.com/kyma-project/kyma/main/docs/" 
     }
 
   ],
