@@ -19,6 +19,7 @@ jobs:
         run: npm install
       
       - name: Checkout kyma-project/kyma
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/kyma
@@ -29,6 +30,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./    
 
       - name: Checkout kyma-project/btp-manager
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/btp-manager
@@ -39,6 +41,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
   
       - name: Checkout kyma-project/istio
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/istio
@@ -49,6 +52,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
   
       - name: Checkout kyma-project/serverless-manager
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/serverless-manager
@@ -59,6 +63,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/telemetry-manager
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/telemetry-manager
@@ -69,6 +74,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/eventing-manager
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/eventing-manager
@@ -80,6 +86,7 @@ jobs:
   
   
       - name: Checkout kyma-project/api-gateway
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/api-gateway
@@ -90,6 +97,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/nats-manager  
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/nats-manager
@@ -100,6 +108,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
       
       - name: Checkout kyma-project/application-connector-manager
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/application-connector-manager
@@ -110,6 +119,7 @@ jobs:
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
 
       - name: Checkout kyma-project/keda-manager  
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/keda-manager
@@ -118,8 +128,9 @@ jobs:
         run: |
           cd keda-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-          
+
       - name: Checkout kyma-project/community 
+        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/community
