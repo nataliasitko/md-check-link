@@ -8,6 +8,7 @@ jobs:
   verify-links:
     strategy:
       fail-fast: false
+      
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,123 +20,123 @@ jobs:
         run: npm install
       
       - name: Checkout kyma-project/kyma
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/kyma
           path: kyma
       - name: Verify kyma links
+        continue-on-error: true
         run: |
           cd kyma
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./    
 
       - name: Checkout kyma-project/btp-manager
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/btp-manager
           path: btp-manager
       - name: Verify btp-manager links
+        continue-on-error: true
         run: |
           cd btp-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
   
       - name: Checkout kyma-project/istio
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/istio
           path: istio 
       - name: Verify istio links
+        continue-on-error: true
         run: |
           cd istio
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
   
       - name: Checkout kyma-project/serverless-manager
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/serverless-manager
           path: serverless-manager
       - name: Verify serverless-manager links
+        continue-on-error: true
         run: |
           cd serverless-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/telemetry-manager
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/telemetry-manager
           path: telemetry-manager 
       - name: Verify telemetry-manager links
+        continue-on-error: true
         run: |
           cd telemetry-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/eventing-manager
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/eventing-manager
           path: eventing-manager  
       - name: Verify eventing-manager links
+        continue-on-error: true
         run: |
           cd eventing-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
   
   
       - name: Checkout kyma-project/api-gateway
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/api-gateway
           path: api-gateway 
       - name: Verify api-gateway links
+        continue-on-error: true
         run: |
           cd api-gateway
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/nats-manager  
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/nats-manager
           path: nats-manager  
       - name: Verify nats-manager links 
+        continue-on-error: true
         run: |
           cd nats-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
       
       - name: Checkout kyma-project/application-connector-manager
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/application-connector-manager
           path: application-connector-manager 
       - name: Verify application-connector-manager links
+        continue-on-error: true 
         run: |
           cd application-connector-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
 
       - name: Checkout kyma-project/keda-manager  
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/keda-manager
           path: keda-manager  
       - name: Verify keda-manager links
+        continue-on-error: true
         run: |
           cd keda-manager
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/community 
-        if: always()
         uses: actions/checkout@v3
         with:
           repository: kyma-project/community
           path: community
       - name: Verify community links
+        continue-on-error: true
         run: |
           cd community
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
