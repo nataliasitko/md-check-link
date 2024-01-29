@@ -242,6 +242,7 @@ function LinkChecker(options) {
             }
         }
         console.log('%s links checked, %s dead links found', count, deadCount);
+        return deadCount;
     }
 }
 
@@ -323,8 +324,9 @@ program
         console.time("Links checked in")
 
         await linkChecker.checkLinks();
-        linkChecker.report();
+        let deadCount = linkChecker.report();
         console.timeEnd("Links checked in")
+        process.exit(deadCount > 0 ? 1 : 0);
 
     })
 
