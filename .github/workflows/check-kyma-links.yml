@@ -23,60 +23,109 @@ jobs:
         with:
           repository: kyma-project/kyma
           path: kyma
+      - name: Verify kyma links
+        run: |
+          cd kyma
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./    
 
       - name: Checkout kyma-project/btp-manager
         uses: actions/checkout@v3
         with:
           repository: kyma-project/btp-manager
           path: btp-manager
-
+      - name: Verify btp-manager links
+        run: |
+          cd btp-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+  
       - name: Checkout kyma-project/istio
         uses: actions/checkout@v3
         with:
           repository: kyma-project/istio
           path: istio 
+      - name: Verify istio links
+        run: |
+          cd istio
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+  
       - name: Checkout kyma-project/serverless-manager
         uses: actions/checkout@v3
         with:
           repository: kyma-project/serverless-manager
           path: serverless-manager
+      - name: Verify serverless-manager links
+        run: |
+          cd serverless-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
 
       - name: Checkout kyma-project/telemetry-manager
         uses: actions/checkout@v3
         with:
           repository: kyma-project/telemetry-manager
           path: telemetry-manager 
+      - name: Verify telemetry-manager links
+        run: |
+          cd telemetry-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+
       - name: Checkout kyma-project/eventing-manager
         uses: actions/checkout@v3
         with:
           repository: kyma-project/eventing-manager
           path: eventing-manager  
+      - name: Verify eventing-manager links
+        run: |
+          cd eventing-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+  
+  
       - name: Checkout kyma-project/api-gateway
         uses: actions/checkout@v3
         with:
           repository: kyma-project/api-gateway
           path: api-gateway 
+      - name: Verify api-gateway links
+        run: |
+          cd api-gateway
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+
       - name: Checkout kyma-project/nats-manager  
         uses: actions/checkout@v3
         with:
           repository: kyma-project/nats-manager
           path: nats-manager  
+      - name: Verify nats-manager links 
+        run: |
+          cd nats-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
+      
       - name: Checkout kyma-project/application-connector-manager
         uses: actions/checkout@v3
         with:
           repository: kyma-project/application-connector-manager
           path: application-connector-manager 
+      - name: Verify application-connector-manager links
+        run: |
+          cd application-connector-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
+
       - name: Checkout kyma-project/keda-manager  
         uses: actions/checkout@v3
         with:
           repository: kyma-project/keda-manager
           path: keda-manager  
+      - name: Verify keda-manager links
+        run: |
+          cd keda-manager
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+          
       - name: Checkout kyma-project/community 
         uses: actions/checkout@v3
         with:
           repository: kyma-project/community
           path: community
-            
-      - name: Verify links
+      - name: Verify community links
         run: |
-          node md-check-link.js -q -n 8 -c .mlc.config.json ./kyma/docs ./btp-manager/docs ./istio/docs ./serverless-manager/docs ./telemetry-manager/docs ./eventing-manager/docs ./api-gateway/docs ./nats-manager/docs ./application-connector-manager/docs ./keda-manager/docs ./community/docs
+          cd community
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
+            
