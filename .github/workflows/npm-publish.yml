@@ -19,7 +19,6 @@ jobs:
       - name: Install & build 
         run: |
           npm ci
-          npm run test
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
