@@ -1,4 +1,4 @@
-name: Verify markdown links in Kyma project
+name: Help portal links
 
 on:
   workflow_dispatch:
