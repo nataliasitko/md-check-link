@@ -1,43 +1,64 @@
-> **NOTE:** This is a general template that you can use for a project README.md. Except for the mandatory sections, use only those sections that suit your use case but keep the proposed section order.
->
-> Mandatory sections: 
-> - `Overview`
-> - `Prerequisites`, if there are any requirements regarding hard- or software
-> - `Installation`
-> - `Contributing` - do not change this!
-> - `Code of Conduct` - do not change this!
-> - `Licensing` - do not change this!
+# md-check-link
 
-# {Project Title}
-<!--- mandatory --->
-> Modify the title and insert the name of your project. Use Heading 1 (H1).
+This tool was created as a a fork of [markdown-link-check](https://github.com/tcort/markdown-link-check) with added support for checking links to [docsify aliases](https://docsify.js.org/#/configuration?id=alias). During the development it turned out that the original tool is not maintained anymore, and too many changes are required to make it performant and fully functional. Therefore, it was decided to create a new tool with a new name and keep only similar configuration options and reporting format.
 
-## Overview
-<!--- mandatory section --->
-
-> Provide a description of the project's functionality.
->
-> If it is an example README.md, describe what the example illustrates.
+Features:
+- check for broken links in markdown files
+- validate anchors to headers in the same file and to other files in the same project (relative links)
+- validate links to external resources
+- validate links to websites hosting markdowns with [docsify](https://docsify.js.org/#/) (e.g. GitHub pages)
+- parallel processing of links
+- configurable timeout and retry count
+- configurable replacement patterns for links (e.g. to replace docsify aliases with raw links)
+- configurable alive status codes
 
 ## Prerequisites
 
-> List the requirements to run the project or example.
+- [node.js](https://nodejs.org/en) 20.x or higher
 
 ## Installation
 
-> Explain the steps to install your project. If there are multiple installation options, mention the recommended one and include others in a separate document. Create an ordered list for each installation task.
->
-> If it is an example README.md, describe how to build, run locally, and deploy the example. Format the example as code blocks and specify the language, highlighting where possible. Explain how you can validate that the example ran successfully. For example, define the expected output or commands to run which check a successful deployment.
->
-> Add subsections (H3) for better readability.
+npm install -g md-check-link
 
 ## Usage
 
-> Explain how to use the project. You can create multiple subsections (H3). Include the instructions or provide links to the related documentation.
+```
+Usage: md-check-link [options] [filesOrFolders...]
 
-## Development
+Options:
+  -V, --version            output the version number
+  -n, --parallel <number>  number of parallel requests (default: 2)
+  -c, --config [config]    apply a config file (JSON), holding e.g. url specific header configuration
+  -q, --quiet              displays errors only
+  -h, --help               display help for command
+```
 
-> Add instructions on how to develop the project or example. It must be clear what to do and, for example, how to trigger the tests so that other contributors know how to make their pull requests acceptable. Include the instructions or provide links to related documentation.
+## Configuration file
+```
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://example.net"
+    }
+  ],
+  "replacementPatterns": [
+    {
+      "docsify": true,
+      "pattern": "^https://kyma-project.io/#/btp-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/btp-manager/main/docs/"
+    },
+    {
+      "pattern": "^/api-gateway/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/api-gateway/main/docs/"
+    }
+
+  ],
+  "timeout": "10s",
+  "retryCount": 5,
+  "aliveStatusCodes": [200]
+}
+
+```
 
 ## Contributing
 <!--- mandatory section - do not change this! --->

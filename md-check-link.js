@@ -211,8 +211,6 @@ function LinkChecker(options) {
         const statusLabels = {
             alive: chalk.green('✓'),
             dead: chalk.red('✖'),
-            ignored: chalk.gray('/'),
-            error: chalk.yellow('⚠'),
         };
         let count = 0;
         let deadCount = 0;
