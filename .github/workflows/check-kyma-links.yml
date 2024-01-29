@@ -8,7 +8,19 @@ jobs:
   verify-links:
     strategy:
       fail-fast: false
-      
+      matrix:
+        repository:
+          - kyma
+          - btp-manager
+          - istio
+          - serverless-manager
+          - telemetry-manager
+          - eventing-manager
+          - api-gateway
+          - nats-manager
+          - application-connector-manager
+          - keda-manager  
+          - community
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,126 +30,31 @@ jobs:
           node-version: '20.x'
       - name: Install 
         run: npm install
-      
-      - name: Checkout kyma-project/kyma
+      - name: Checkout ${{matrix.repository}}
         uses: actions/checkout@v3
         with:
-          repository: kyma-project/kyma
-          path: kyma
-      - name: Verify kyma links
-        continue-on-error: true
+          repository: kyma-project/${{matrix.repository}}
+          path: ${{matrix.repository}}
+      - name: Verify links
         run: |
-          cd kyma
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./    
-
-      - name: Checkout kyma-project/btp-manager
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/btp-manager
-          path: btp-manager
-      - name: Verify btp-manager links
-        continue-on-error: true
-        run: |
-          cd btp-manager
+          cd ${{matrix.repository}}
           node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-  
-      - name: Checkout kyma-project/istio
+  help-portal-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - name: Install 
+        run: npm install
+      - name: Checkout ${{matrix.repository}}
         uses: actions/checkout@v3
         with:
-          repository: kyma-project/istio
-          path: istio 
-      - name: Verify istio links
-        continue-on-error: true
+          repository: SAP-docs/btp-cloud-platform
+          path: btp-cloud-platform
+      - name: Verify links
         run: |
-          cd istio
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-  
-      - name: Checkout kyma-project/serverless-manager
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/serverless-manager
-          path: serverless-manager
-      - name: Verify serverless-manager links
-        continue-on-error: true
-        run: |
-          cd serverless-manager
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-
-      - name: Checkout kyma-project/telemetry-manager
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/telemetry-manager
-          path: telemetry-manager 
-      - name: Verify telemetry-manager links
-        continue-on-error: true
-        run: |
-          cd telemetry-manager
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-
-      - name: Checkout kyma-project/eventing-manager
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/eventing-manager
-          path: eventing-manager  
-      - name: Verify eventing-manager links
-        continue-on-error: true
-        run: |
-          cd eventing-manager
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-  
-  
-      - name: Checkout kyma-project/api-gateway
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/api-gateway
-          path: api-gateway 
-      - name: Verify api-gateway links
-        continue-on-error: true
-        run: |
-          cd api-gateway
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-
-      - name: Checkout kyma-project/nats-manager  
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/nats-manager
-          path: nats-manager  
-      - name: Verify nats-manager links 
-        continue-on-error: true
-        run: |
-          cd nats-manager
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
-      
-      - name: Checkout kyma-project/application-connector-manager
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/application-connector-manager
-          path: application-connector-manager 
-      - name: Verify application-connector-manager links
-        continue-on-error: true 
-        run: |
-          cd application-connector-manager
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./  
-
-      - name: Checkout kyma-project/keda-manager  
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/keda-manager
-          path: keda-manager  
-      - name: Verify keda-manager links
-        continue-on-error: true
-        run: |
-          cd keda-manager
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-
-      - name: Checkout kyma-project/community 
-        uses: actions/checkout@v3
-        with:
-          repository: kyma-project/community
-          path: community
-      - name: Verify community links
-        continue-on-error: true
-        run: |
-          cd community
-          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./
-            
+          cd btp-cloud-platform
+          node ../md-check-link.js -q -n 8 -c ../.mlc.config.json ./docs
