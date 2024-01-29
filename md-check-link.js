@@ -227,7 +227,7 @@ function LinkChecker(options) {
                 }
             }
             if (deadLinks.length > 0) {
-                console.error(chalk.red('\nERROR: %s dead links found in %s !'), deadLinks.length, path.relative(this.options.basePath, filename));
+                console.log(chalk.red('\nERROR: %s dead links found in %s !'), deadLinks.length, path.relative(this.options.basePath, filename));
             } else if (!this.options.quiet) {
                 console.log(chalk.green('\nNo dead links found in %s'), path.relative(this.options.basePath, filename));
             }
