@@ -23,15 +23,15 @@ jobs:
           - community
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x'
       - name: Install 
         run: npm install
       - name: Checkout ${{matrix.repository}}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: kyma-project/${{matrix.repository}}
           path: ${{matrix.repository}}
@@ -42,15 +42,15 @@ jobs:
   help-portal-link:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x'
       - name: Install 
         run: npm install
       - name: Checkout ${{matrix.repository}}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: SAP-docs/btp-cloud-platform
           path: btp-cloud-platform
