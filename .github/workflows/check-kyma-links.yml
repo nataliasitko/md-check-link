@@ -27,7 +27,7 @@ jobs:
         with:
           repository: kyma-project/btp-manager
           path: btp-manager
-          
+
       - name: Checkout kyma-project/istio
         uses: actions/checkout@v3
         with:
@@ -74,12 +74,7 @@ jobs:
         with:
           repository: kyma-project/community
           path: community
-      - name: Checkout SAP-docs/btp-cloud-platform
-        uses: actions/checkout@v3
-        with:
-          repository: SAP-docs/btp-cloud-platform
-          path: btp-cloud-platform
             
       - name: Verify links
         run: |
-          node md-check-link.js -q -n 8 -c .mlc.config.json ./kyma/docs ./btp-manager/docs ./istio/docs ./serverless-manager/docs ./telemetry-manager/docs ./eventing-manager/docs ./api-gateway/docs ./nats-manager/docs ./application-connector-manager/docs ./keda-manager/docs ./community/docs ./btp-cloud-platform/docs
+          node md-check-link.js -q -n 8 -c .mlc.config.json ./kyma/docs ./btp-manager/docs ./istio/docs ./serverless-manager/docs ./telemetry-manager/docs ./eventing-manager/docs ./api-gateway/docs ./nats-manager/docs ./application-connector-manager/docs ./keda-manager/docs ./community/docs
