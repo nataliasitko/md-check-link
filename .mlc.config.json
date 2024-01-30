@@ -1,5 +1,4 @@
 {
-
   "replacementPatterns": [
     {
       "docsify": true,
@@ -92,5 +91,4 @@
   "timeout": "10s",
   "retryCount": 5,
   "aliveStatusCodes": [200]
-
 }

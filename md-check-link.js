@@ -5,7 +5,8 @@ const markdownLinkExtractor = require('markdown-link-extractor');
 const path = require('path');
 const Isemail = require('isemail');
 const pkg = require('./package.json');
-const program = require('commander');
+const { Command, Option}  = require('commander');
+const program = new Command();
 
 async function worker(pendingMap, filesMap, opts) {
     let link = pendingMap.keys().next().value
@@ -62,25 +63,27 @@ async function checkLink(link, opts, attempts = 0) {
     };
 }
 
-function LinkChecker(options) {
-    this.files = new Map();
-    this.options = options || {};
-    this.fileQueue = new Set();
-    if (!this.options.basePath) {
-        this.options.basePath = process.cwd();
+class LinkChecker {
+    constructor(options) {
+        this.files = new Map();
+        this.options = options || {};
+        this.fileQueue = new Set();
+        if (!this.options.basePath) {
+            this.options.basePath = process.cwd();
+        }
     }
-    this.processReplacements = function (link) {
+    processReplacements(link) {
         if (this.options.replacementPatterns) {
             for (let replacementPattern of this.options.replacementPatterns) {
                 let pattern = replacementPattern.pattern instanceof RegExp ? replacementPattern.pattern : new RegExp(replacementPattern.pattern);
                 if (pattern.test(link)) {
                     link = link.replace(pattern, replacementPattern.replacement);
                     if (replacementPattern.docsify) {
-                        let queryLink=/(.*)(\?id=)(.*)/gm.exec(link);
+                        let queryLink = /(.*)(\?id=)(.*)/gm.exec(link);
                         let newLink = queryLink ? queryLink[1] : link;
                         if (newLink.endsWith('/')) {
                             newLink += 'README.md'
-                        } 
+                        }
                         let filename = newLink.split('/').pop();
                         if (filename.indexOf('.') < 0) {
                             newLink += '.md'
@@ -96,7 +99,7 @@ function LinkChecker(options) {
         return link;
     }
 
-    this.shouldIgnore = function (link) {
+    shouldIgnore(link) {
         if (this.options.ignorePatterns) {
             const shouldIgnore = this.options.ignorePatterns.some(function (ignorePattern) {
                 return ignorePattern.pattern instanceof RegExp ? ignorePattern.pattern.test(link) : (new RegExp(ignorePattern.pattern)).test(link) ? true : false;
@@ -106,7 +109,7 @@ function LinkChecker(options) {
         return false;
     }
 
-    this.processLink = function (filename, l, anchors) {
+    processLink(filename, l, anchors) {
         l = this.processReplacements(l);
         if (this.shouldIgnore(this.options, l)) {
             return { link: l, status: 'ignored' }
@@ -135,7 +138,7 @@ function LinkChecker(options) {
         return { link: l, targetFile, status: fs.existsSync(targetFile) ? 'alive' : 'dead' }
     }
 
-    this.addMarkdownFile = function (filename) {
+    addMarkdownFile(filename) {
         let absoluteFilename = path.join(this.options.basePath, filename);
         if (this.files.has(absoluteFilename)) {
             return;
@@ -163,7 +166,7 @@ function LinkChecker(options) {
         this.files.set(absoluteFilename, { links: entries, anchors });
     }
 
-    this.addFilesFromQueue = function () {
+    addFilesFromQueue() {
         for (let tf of this.fileQueue.values()) {
             if (this.files.has(tf)) {
                 continue;
@@ -174,7 +177,7 @@ function LinkChecker(options) {
         }
     }
 
-    this.checkLinks = async function () {
+    async checkLinks() {
         this.addFilesFromQueue()
         let pendingMap = new Map()
         for (let filename of this.files.keys()) {
@@ -199,7 +202,7 @@ function LinkChecker(options) {
         }
         await Promise.all(workers);
     }
-    this.report = async function () {
+    async report() {
         let chalk = (await import('chalk')).default;
         const statusLabels = {
             alive: chalk.green('✓'),
@@ -255,8 +258,8 @@ function loadAllMarkdownFiles(rootFolder = '.') {
 
 program
     .version(pkg.version)
-    .option('-n, --parallel <number>', 'number of parallel requests (default: 2)')
-    .option('-c, --config [config]', 'apply a config file (JSON), holding e.g. url specific header configuration')
+    .addOption(new Option('-n, --parallel <number>', 'number of parallel requests').default(2))
+    .option('-c, --config [config]', 'apply a config file (JSON)')
     .option('-q, --quiet', 'displays errors only')
     .arguments('[filesOrFolders...]')
     .action(async function () {
@@ -291,6 +294,9 @@ program
             opts.retryOn429 = config.retryOn429;
             opts.retryCount = config.retryCount;
             opts.parallel = opts.parallel || config.parallel;
+            if (typeof opts.parallel === 'string') {
+                opts.parallel = parseInt(opts.parallel);
+            }
         }
         const linkChecker = new LinkChecker(opts);
 
