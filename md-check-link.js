@@ -263,7 +263,7 @@ function loadAllMarkdownFiles(rootFolder = '.') {
 program
     .version(pkg.version)
     .addOption(new Option('-n, --parallel <number>', 'number of parallel requests').default(2))
-    .option('-c, --config [config]', 'apply a config file (JSON)')
+    .option('-c, --config <file or url>', 'apply a config file (JSON)')
     .option('-q, --quiet', 'displays errors only')
     .arguments('[filesOrFolders...]')
     .action(async function () {
@@ -276,12 +276,7 @@ program
             process.exit(1);
         }
         if (this.opts().config) {
-            if (!fs.existsSync(this.opts().config)) {
-                console.error(chalk.red('\nERROR: Config file not found.'));
-                process.exit(1);
-            }
             let config = await loadConfig(opts.config);
-
             opts.ignorePatterns = config.ignorePatterns;
             opts.replacementPatterns = config.replacementPatterns;
             opts.httpHeaders = config.httpHeaders;
@@ -335,8 +330,12 @@ program.parse(process.argv);
 
 async function loadConfig(config) {
     try {
+        if (config.startsWith('http')) {
+            return fetch(config).then(res => res.json())
+        }
         return JSON.parse(fs.readFileSync(config, 'utf8'))
     } catch (error) {
+        console.log(error)
         if (error.code === 'ENOENT') {
             console.error(chalk.red('\nERROR: Config file not found.'));
         } else {
