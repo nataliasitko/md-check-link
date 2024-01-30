@@ -5,7 +5,7 @@ const markdownLinkExtractor = require('markdown-link-extractor');
 const path = require('path');
 const Isemail = require('isemail');
 const pkg = require('./package.json');
-const { Command, Option}  = require('commander');
+const { Command, Option } = require('commander');
 const program = new Command();
 
 async function worker(pendingMap, filesMap, opts) {
@@ -171,9 +171,13 @@ class LinkChecker {
             if (this.files.has(tf)) {
                 continue;
             }
-            let markdown = fs.readFileSync(tf, 'utf8');
-            let { anchors } = markdownLinkExtractor(markdown);
-            this.files.set(tf, { links: [], anchors });
+            if (fs.existsSync(tf)) {
+                let markdown = fs.readFileSync(tf, 'utf8');
+                let { anchors } = markdownLinkExtractor(markdown);
+                this.files.set(tf, { links: [], anchors });
+            } else {
+                this.files.set(tf, { links: [], anchors: [] });
+            }
         }
     }
 
