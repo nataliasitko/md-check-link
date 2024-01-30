@@ -76,26 +76,19 @@ function LinkChecker(options) {
                 if (pattern.test(link)) {
                     link = link.replace(pattern, replacementPattern.replacement);
                     if (replacementPattern.docsify) {
-                        let pathParts = link.split('/');
-                        let lastPathItem = pathParts[pathParts.length - 1];
-
-                        let parts = lastPathItem.split('?id=');
-                        let filename = parts[0];
-                        if (link.endsWith('/')) {
-                            filename = 'README.md'
-                        } else if (filename.indexOf('.') < 0) {
-                            filename += '.md'
+                        let queryLink=/(.*)(\?id=)(.*)/gm.exec(link);
+                        let newLink = queryLink ? queryLink[1] : link;
+                        if (newLink.endsWith('/')) {
+                            newLink += 'README.md'
+                        } 
+                        let filename = newLink.split('/').pop();
+                        if (filename.indexOf('.') < 0) {
+                            newLink += '.md'
                         }
-                        let newLink = '';
-                        for (let i = 0; i < pathParts.length - 1; i++) {
-                            newLink += pathParts[i] + '/';
-                        }
-                        newLink += filename;
-                        if (parts.length > 1) {
-                            newLink += '#' + parts[1];
+                        if (queryLink) {
+                            newLink += '#' + queryLink[3]
                         }
                         link = newLink;
-
                     }
                 }
             }
