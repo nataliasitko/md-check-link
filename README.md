@@ -32,6 +32,39 @@ Options:
   -q, --quiet              displays errors only
   -h, --help               display help for command
 ```
+Example:
+```
+md-check-link -n 8 -c config.json docs
+```
+
+## Sample githhub action
+
+This workflow verify links in all markdown files in the repository. It runs every day at midnight and on pull requests. You can also run it manually. 
+
+```
+name: Verify markdown links
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  pull_request:
+  
+jobs:
+  verify-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install md-check-link
+        run: npm install -g md-check-link
+      - name: Verify links
+        run: |
+          md-check-link -q -n 8 -c https://raw.githubusercontent.com/kyma-project/md-check-link/main/.mlc.config.js ./
+```
 
 ## Configuration file
 ```
@@ -57,7 +90,6 @@ Options:
   "retryCount": 5,
   "aliveStatusCodes": [200]
 }
-
 ```
 
 ## Contributing
