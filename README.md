@@ -37,7 +37,7 @@ Example:
 md-check-link -n 8 -c config.json docs
 ```
 
-## Sample githhub action
+## Sample github action
 
 This workflow verify links in all markdown files in the repository. It runs every day at midnight and on pull requests. You can also run it manually. 
 
