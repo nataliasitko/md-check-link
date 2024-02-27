@@ -1,4 +1,5 @@
 # md-check-link
+[![REUSE status](https://api.reuse.software/badge/github.com/kyma-project/md-check-link)](https://api.reuse.software/info/github.com/kyma-project/md-check-link)
 
 This tool was created as a a fork of [markdown-link-check](https://github.com/tcort/markdown-link-check) with added support for checking links to [docsify aliases](https://docsify.js.org/#/configuration?id=alias). During the development it turned out that the original tool is not maintained anymore, and too many changes are required to make it performant and fully functional. Therefore, it was decided to create a new tool with a new name and keep only similar configuration options and reporting format.
 
