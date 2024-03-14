@@ -1,6 +1,6 @@
 {
   "name": "md-check-link",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tool for checking links in the markdown files",
   "main": "md-check-link.js",
   "bin": "md-check-link.js",
@@ -30,5 +30,4 @@
   "devDependencies": {
     "eslint": "^8.39.0"
   }
-
 }
