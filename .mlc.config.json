@@ -1,4 +1,9 @@
 {
+  "ignorePatterns": [
+    {
+      "pattern": "#loio"
+    }   
+  ],
   "replacementPatterns": [
     {
       "docsify": true,

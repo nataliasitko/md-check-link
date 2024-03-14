@@ -111,7 +111,7 @@ class LinkChecker {
 
     processLink(filename, l, anchors) {
         l = this.processReplacements(l);
-        if (this.shouldIgnore(this.options, l)) {
+        if (this.shouldIgnore(l)) {
             return { link: l, status: 'ignored' }
         }
         if (l.startsWith('#')) {
@@ -211,6 +211,7 @@ class LinkChecker {
         const statusLabels = {
             alive: chalk.green('✓'),
             dead: chalk.red('✖'),
+            ignored: chalk.yellow('⚠'),
         };
         let count = 0;
         let deadCount = 0;
