@@ -94,6 +94,7 @@
 
   ],
   "timeout": "10s",
-  "retryCount": 5,
+  "retryCount": 4,
+  "retryOn429": true,
   "aliveStatusCodes": [200]
 }

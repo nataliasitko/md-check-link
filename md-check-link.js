@@ -34,8 +34,8 @@ function checkMailTo(link, opts) {
 
 async function checkLink(link, opts, attempts = 0) {
     let retryOn429 = opts.retryOn429 || false;
-
     let retryCount = opts.retryCount || 2;
+    console.log('Checking: ' + link,'attempt: ' + attempts);
     const url = link;
     try {
         let res = await fetch(url, { method: 'HEAD', headers: opts.headers, signal: AbortSignal.timeout(opts.timeout) })
@@ -46,10 +46,10 @@ async function checkLink(link, opts, attempts = 0) {
                 if (attempts >= retryCount || !retryOn429) {
                     return 'dead'
                 }
-                return new Promise((resolve, reject) => {
+                return await new Promise((resolve, reject) => {
                     setTimeout(function () {
-                        resolve(this, checkLink(link, opts, attempts + 1));
-                    }, 1000)
+                        resolve(checkLink(link, opts, attempts + 1));
+                    }, 15000)
                 })
             }
             else {
