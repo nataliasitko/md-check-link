@@ -35,7 +35,6 @@ function checkMailTo(link, opts) {
 async function checkLink(link, opts, attempts = 0) {
     let retryOn429 = opts.retryOn429 || false;
     let retryCount = opts.retryCount || 2;
-    console.log('Checking: ' + link,'attempt: ' + attempts);
     const url = link;
     try {
         let res = await fetch(url, { method: 'HEAD', headers: opts.headers, signal: AbortSignal.timeout(opts.timeout) })
