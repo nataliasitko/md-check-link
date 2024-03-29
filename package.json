@@ -1,6 +1,6 @@
 {
   "name": "md-check-link",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tool for checking links in the markdown files",
   "main": "md-check-link.js",
   "bin": "md-check-link.js",
