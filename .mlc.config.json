@@ -2,7 +2,23 @@
   "ignorePatterns": [
     {
       "pattern": "#loio"
-    }   
+    },
+    {
+      "pattern": "#copy"
+    },
+    {
+      "pattern": "https://cap.cloud.sap/docs"
+    },
+    {
+      "pattern": "https://cockpit.btp.cloud.sap/cockpit/?idp="
+    }, 
+    {
+      "pattern": "https://www.sap.com/products/extension-suite/pricing.html"
+    },
+    {
+      "pattern": "https://transport-service-app-backend.ts.cfapps.eu10.hana.ondemand.com/"
+    }
+  
   ],
   "replacementPatterns": [
     {
