@@ -16,7 +16,7 @@
       "pattern": "https://www.sap.com/products/extension-suite/pricing.html"
     },
     {
-      "pattern": "https://transport-service-app-backend.ts.cfapps.eu10.hana.ondemand.com/"
+      "pattern": "https://transport-service-app-backend.ts.cfapps.eu10.hana.ondemand.com"
     },
     {
       "pattern": "https://mvnrepository.com/artifact/com.sap.cloud.sjb.cf/sap-java-buildpack-bom"
