@@ -10,7 +10,7 @@
       "pattern": "https://cap.cloud.sap/docs"
     },
     {
-      "pattern": "https://cockpit.btp.cloud.sap/cockpit/?idp="
+      "pattern": "https://cockpit.btp.cloud.sap/cockpit/"
     }, 
     {
       "pattern": "https://www.sap.com/products/extension-suite/pricing.html"
