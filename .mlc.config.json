@@ -23,6 +23,9 @@
     },
     {
       "pattern": "https://uaa.cf.eu10.hana.ondemand.com/oauth/token"
+    },
+    {
+      "pattern": "https://api8sales.cert.successfactors.com/"
     }
   ],
   "replacementPatterns": [
