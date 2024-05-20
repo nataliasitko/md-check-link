@@ -22,6 +22,9 @@
       "pattern": "https://mvnrepository.com/artifact/com.sap.cloud.sjb.cf/sap-java-buildpack-bom"
     },
     {
+      "pattern": "https://mvnrepository.com/artifact/com.sap.cloud.sjb/*"
+    },
+    {
       "pattern": "https://uaa.cf.eu10.hana.ondemand.com/oauth/token"
     },
     {
