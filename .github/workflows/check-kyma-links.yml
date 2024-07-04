@@ -21,6 +21,7 @@ jobs:
           - application-connector-manager
           - keda-manager  
           - community
+          - cloud-manager
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
