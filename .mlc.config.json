@@ -117,6 +117,10 @@
     {
       "pattern": "^/api-gateway/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/api-gateway/main/docs/"
+    },
+    {
+      "pattern": "^/cloud-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/cloud-manager/main/docs/"
     }
 
   ],
