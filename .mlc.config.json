@@ -79,6 +79,11 @@
     },
     {
       "docsify": true,
+      "pattern": "https://kyma-project.io/#/cloud-manager/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/cloud-manager/main/docs/"
+    },
+    {
+      "docsify": true,
       "pattern": "https://kyma-project.io/#/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/kyma/main/docs/"
     },
