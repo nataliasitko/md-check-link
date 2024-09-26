@@ -84,6 +84,11 @@
     },
     {
       "docsify": true,
+      "pattern": "https://kyma-project.io/#/docker-registry/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/docker-registry/main/docs/"
+    },
+    {
+      "docsify": true,
       "pattern": "https://kyma-project.io/#/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/kyma/main/docs/"
     },
@@ -126,6 +131,10 @@
     {
       "pattern": "^/cloud-manager/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/cloud-manager/main/docs/"
+    },
+    {
+      "pattern": "^/docker-registry/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/docker-registry/main/docs/"
     }
 
   ],
