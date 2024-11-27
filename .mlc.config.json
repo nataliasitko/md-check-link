@@ -29,6 +29,9 @@
     },
     {
       "pattern": "https://api8sales.cert.successfactors.com"
+    },
+    {
+      "pattern": "https://spc.ondemand.com/"
     }
   ],
   "replacementPatterns": [
