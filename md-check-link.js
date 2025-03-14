@@ -171,6 +171,9 @@ class LinkChecker {
                 continue;
             }
             if (fs.existsSync(tf)) {
+                if (fs.lstatSync(tf).isDirectory()){
+                    continue; 
+                }
                 let markdown = fs.readFileSync(tf, 'utf8');
                 let { anchors } = markdownLinkExtractor(markdown);
                 this.files.set(tf, { links: [], anchors });
