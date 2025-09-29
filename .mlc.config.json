@@ -32,6 +32,9 @@
     },
     {
       "pattern": "https://spc.ondemand.com/"
+    },
+    {
+      "pattern": "https://www.npmjs.com/"
     }
   ],
   "replacementPatterns": [
