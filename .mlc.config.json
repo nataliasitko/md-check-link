@@ -99,8 +99,14 @@
       "replacement": "https://raw.githubusercontent.com/kyma-project/busola/main/docs/"
     },
     {
+      "docsify": true,
       "pattern": "https://kyma-project.io/#/registry-proxy/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/registry-proxy/main/docs/"
+    },
+    {
+      "docsify": true,
+      "pattern": "https://kyma-project.io/#/community-modules/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/community-modules/main/docs/"
     },
     {
       "docsify": true,
@@ -158,6 +164,10 @@
     {
       "pattern": "^/registry-proxy/",
       "replacement": "https://raw.githubusercontent.com/kyma-project/registry-proxy/main/docs/"
+    },
+    {
+      "pattern": "^/community-modules/",
+      "replacement": "https://raw.githubusercontent.com/kyma-project/community-modules/main/docs/"
     }
 
   ],
